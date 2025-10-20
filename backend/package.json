@@ -1,10 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "ts-node src/server.ts",
+    "start": "node src/index.js",
+    "migrate": "npx prisma migrate dev --name init",
+    "generate": "npx prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +22,15 @@
     "express-session": "^1.18.2",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.16.3",
     "prisma": "^6.17.1",
     "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

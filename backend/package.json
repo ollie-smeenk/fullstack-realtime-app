@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src/server.ts",
-    "start": "node src/index.js",
+    "start": "ts-node src/server.ts",
     "migrate": "npx prisma migrate dev --name init",
     "generate": "npx prisma generate"
   },

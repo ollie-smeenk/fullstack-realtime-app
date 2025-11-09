@@ -5,8 +5,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/server.ts",
     "start": "ts-node src/server.ts",
+    "dev": "ts-node src/server.ts",
     "migrate": "npx prisma migrate dev --name init",
     "generate": "npx prisma generate"
   },

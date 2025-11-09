@@ -1,5 +1,5 @@
 import express from "express";
-import passport from "../auth.ts";
+import passport from "../auth.js";
 
 const router = express.Router();
 

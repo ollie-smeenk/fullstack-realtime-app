@@ -2,12 +2,12 @@ import express from "express";
 import cors from "cors";
 import session from "express-session";
 import dotenv from "dotenv";
-import passport from "./auth.ts";
-import authRoutes from "./routes/authRoutes.ts";
+import passport from "./auth.js";
+import authRoutes from "./routes/authRoutes.js";
 import { PrismaClient } from "@prisma/client";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { startPolling } from "./sockets.ts";
+import { startPolling } from "./sockets.js";
 
 dotenv.config();
 

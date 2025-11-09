@@ -13,7 +13,8 @@ export const startPolling = (io: Server) => {
       const payload = { ts: Date.now(), prices: res.data };
       io.emit("market:update", payload);
     } catch (err) {
-      console.error("poll err", err.message);
+      if (err instanceof Error) console.error("poll err", err.message);
+      else console.error("poll err", err);
     }
   };
 

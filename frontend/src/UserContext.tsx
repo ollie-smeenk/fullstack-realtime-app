@@ -25,19 +25,27 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [socket, setSocket] = useState<Socket | null>(null);
 
+  // ✅ Use environment variable for backend API URL
+  const API_URL =
+    import.meta.env.VITE_API_URL || "http://localhost:4000";
+
   useEffect(() => {
-    axios.get("http://localhost:4000/auth/user", { withCredentials: true })
+    axios
+      .get(`${API_URL}/auth/user`, { withCredentials: true })
       .then((res) => setUser(res.data.user))
       .catch(() => setUser(null));
 
-    const s = io("http://localhost:4000");
+    const s = io(API_URL, { withCredentials: true });
     setSocket(s);
 
-    return () => { s.disconnect(); };
-  }, []);
+    return () => {
+      s.disconnect();
+    };
+  }, [API_URL]);
 
   const logout = () => {
-    axios.post("http://localhost:4000/auth/logout", {}, { withCredentials: true })
+    axios
+      .post(`${API_URL}/auth/logout`, {}, { withCredentials: true })
       .then(() => setUser(null));
   };
 
@@ -47,4 +55,3 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
     </UserContext.Provider>
   );
 };
-
